@@ -1,0 +1,27 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="CHECK_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>tmp/checks.log</file>
+        <encoder>
+            <pattern>%date{ISO8601} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="PAGE_DUMPS" class="ch.qos.logback.core.FileAppender">
+        <file>tmp/page-dumps.log</file>
+        <encoder>
+            <pattern>%date{ISO8601} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="checks" level="INFO">
+        <appender-ref ref="CHECK_FILE" />
+    </logger>
+    <logger name="page-dumps" level="INFO">
+        <appender-ref ref="PAGE_DUMPS" />
+    </logger>
+</configuration>

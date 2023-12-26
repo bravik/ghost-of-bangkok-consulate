@@ -1,0 +1,21 @@
+##
+# Simple setup to run bot and automatically restart the bot on failure
+##
+version: '3.8'
+name: shorty
+
+services:
+  consular:
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    restart: always
+    environment:
+      TELEGRAM_BOT_TOKEN: token
+      ANTICAPTCHA_TOKEN: token
+    networks: [consular]
+    volumes:
+      - ./data/:/app/tmp/
+
+networks:
+  consular:
